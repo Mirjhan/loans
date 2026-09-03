@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:loans/src/login/ui/pages/login_page_2.dart';
+import 'package:loans/src/login/ui/pages/quick_login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const LoginPage2(),
+      home: const RecentLoginPage(),
     );
   }
 }

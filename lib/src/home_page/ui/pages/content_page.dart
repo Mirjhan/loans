@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class ContentPage extends StatelessWidget {
+  final List<Widget> pages = [];
+
+  ContentPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ajustes'),
+        title: Text('CONTENT PAGE '),
         centerTitle: true,
       ),
       body: PageView(),

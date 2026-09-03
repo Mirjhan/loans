@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:loans/src/utils/ui/dimens.dart';
 import 'package:loans/src/utils/ui/short_cut_enum.dart';
 
-class LoginPage2 extends StatelessWidget {
-  const LoginPage2({super.key});
+class RecentLoginPage extends StatelessWidget {
+  const RecentLoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {

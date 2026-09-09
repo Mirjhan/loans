@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loans/src/utils/widgets/app_bar_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -6,10 +7,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Ajustes'),
-        centerTitle: true,
-      ),
+      appBar: appBarWidget(title: 'Ajustes'),
       body: PageView(),
       bottomNavigationBar: BottomNavigationBar(
         items: [

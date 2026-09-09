@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:loans/src/login/ui/pages/login_controller.dart';
 import 'package:loans/src/utils/ui/dimens.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  final LoginController controller = LoginController();
+  LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.sizeOf(context);
 
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            _icon(size),
-            _form(size),
-          ],
+    return GetBuilder<LoginController>(
+      init: controller,
+      builder: (controller) => Scaffold(
+        backgroundColor: Colors.black,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              _icon(size),
+              _form(size),
+            ],
+          ),
         ),
       ),
     );
@@ -44,8 +50,10 @@ class LoginPage extends StatelessWidget {
       child: Column(
         children: [
           _title('Iniciar sesión'),
-          _textBox('Email', 'Ingrese su correo', size),
-          _textBox('Contraseña', 'Ingrese su contraseña', size),
+          _textBox(
+              'Email', 'Ingrese su correo', size, controller.onChangedEmail),
+          _textBox('Contraseña', 'Ingrese su contraseña', size,
+              controller.onChangedPassword),
           _checkbox(size),
           _button('Ingresar', size),
           _text('¿Olvidaste tu contraseña? Presione aquí.'),
@@ -64,7 +72,8 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _textBox(String title, String hintText, Size size) {
+  Widget _textBox(String title, String hintText, Size size,
+      void Function(String)? onChanged) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Container(
@@ -91,6 +100,7 @@ class LoginPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 32),
               child: TextFormField(
+                onChanged: onChanged,
                 decoration: InputDecoration(
                     hintText: hintText, border: InputBorder.none),
               ),
@@ -131,16 +141,20 @@ class LoginPage extends StatelessWidget {
   Widget _button(String text, Size size) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Container(
-        width: size.width,
-        height: size.height * 0.07,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(borderRadius),
-            color: Colors.black),
-        child: Center(
-          child: Text(
-            text,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+      child: GestureDetector(
+        onTap: controller.ingresar,
+        child: Container(
+          width: size.width,
+          height: size.height * 0.07,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(borderRadius),
+              color: Colors.black),
+          child: Center(
+            child: Text(
+              text,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+            ),
           ),
         ),
       ),

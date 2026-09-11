@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:loans/src/login/data/data_stores/user_preferences.dart';
 import 'package:loans/src/login/ui/pages/login_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await UserPreferences().initPrefs();
+
   runApp(const MyApp());
 }
 

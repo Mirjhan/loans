@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:loans/src/customer/ui/pages/customer_page.dart';
 import 'package:loans/src/login/data/data_stores/user_preferences.dart';
-import 'package:loans/src/login/ui/pages/login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: CustomerPage(),
     );
   }
 }
